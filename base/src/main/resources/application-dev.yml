@@ -1,0 +1,37 @@
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/portfolio_dev
+    username: dev_user
+    password: dev_password
+
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+cloudinary:
+  cloud-name: ${CLOUDINARY_CLOUD_NAME:dev-cloud}
+  api-key: ${CLOUDINARY_API_KEY:dev-key}
+  api-secret: ${CLOUDINARY_API_SECRET:dev-secret}
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    com.vux38: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+JWT_SECRET: ${JWT_SECRET}
+JWT_EXPIRATION: ${JWT_EXPIRATION:900000} # 15 phút
+JWT_REFRESH_EXPIRATION: ${JWT_REFRESH_EXPIRATION:604800000} # 7 ngày
