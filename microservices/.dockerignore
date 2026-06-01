@@ -1,0 +1,7 @@
+**/target
+**/.idea
+**/*.iml
+.git
+.gitignore
+local-env.ps1
+.env

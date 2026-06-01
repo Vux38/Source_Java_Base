@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: function
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/portfolio_db
+    username: root
+    password: Sa12
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+    show-sql: true
+
+    properties:
+      hibernate:
+        format_sql: true
+
+
+cloudinary:
+  cloud-name: root
+  api-key: 375549699244218
+  api-secret: Jx6gmFwiE61dkbhTOWUREgsbJdw
