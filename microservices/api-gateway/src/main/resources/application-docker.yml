@@ -4,6 +4,27 @@ server:
 spring:
   application:
     name: api-gateway
+  cloud:
+    gateway:
+      routes:
+        - id: auth-service
+          uri: http://${AUTH_SERVICE_HOST:auth-service}:${AUTH_SERVICE_PORT:8081}
+          predicates:
+            - Path=/api/auth/**
+        - id: user-service
+          uri: http://${USER_SERVICE_HOST:user-service}:${USER_SERVICE_PORT:8082}
+          predicates:
+            - Path=/api/users/**
+        - id: product-service
+          uri: http://${PRODUCT_SERVICE_HOST:product-service}:${PRODUCT_SERVICE_PORT:8083}
+          predicates:
+            - Path=/api/products/**
+        - id: product-service-singular
+          uri: http://${PRODUCT_SERVICE_HOST:product-service}:${PRODUCT_SERVICE_PORT:8083}
+          predicates:
+            - Path=/api/product/**
+          filters:
+            - RewritePath=/api/product/(?<segment>.*), /api/products/$\{segment}
   datasource:
     url: jdbc:mysql://${DB_HOST:mysql}:${DB_PORT:3306}/${DB_NAME:microservice_vux38}?user=${DB_USER:root}
     username: ${DB_USER:root}
