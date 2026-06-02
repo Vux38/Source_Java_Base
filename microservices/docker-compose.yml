@@ -60,6 +60,12 @@ services:
       RABBITMQ_PORT: 5672
       RABBITMQ_USER: ${RABBITMQ_USER:-guest}
       RABBITMQ_PASS: ${RABBITMQ_PASS:-guest}
+      AUTH_SERVICE_HOST: auth-service
+      AUTH_SERVICE_PORT: 8081
+      USER_SERVICE_HOST: user-service
+      USER_SERVICE_PORT: 8082
+      PRODUCT_SERVICE_HOST: product-service
+      PRODUCT_SERVICE_PORT: 8083
       JWT_SECRET: ${JWT_SECRET:-change-me-local-dev-secret}
     ports:
       - "8080:8080"
@@ -70,6 +76,12 @@ services:
         condition: service_healthy
       rabbitmq:
         condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8080/api/gateway/health >/dev/null 2>&1"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
 
   auth-service:
     build:
@@ -100,6 +112,12 @@ services:
         condition: service_healthy
       rabbitmq:
         condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8081/api/auth/health >/dev/null 2>&1"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
 
   user-service:
     build:
@@ -130,6 +148,12 @@ services:
         condition: service_healthy
       rabbitmq:
         condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8082/api/users/health >/dev/null 2>&1"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
 
   product-service:
     build:
@@ -160,6 +184,12 @@ services:
         condition: service_healthy
       rabbitmq:
         condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8083/api/products/health >/dev/null 2>&1"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
 
 volumes:
   mysql-data:
