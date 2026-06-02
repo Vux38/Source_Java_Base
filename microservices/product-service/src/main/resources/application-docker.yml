@@ -25,9 +25,9 @@ spring:
   rabbitmq:
     host: ${RABBITMQ_HOST:rabbitmq}
     port: ${RABBITMQ_PORT:5672}
-    username: ${RABBITMQ_USER}
-    password: ${RABBITMQ_PASS}
+    username: ${RABBITMQ_USER:guest}
+    password: ${RABBITMQ_PASS:guest}
 
 jwt:
-  secret: ${JWT_SECRET}   # hoặc dùng RSA key pair
-  expiration-ms: 300000   # 5 phút
+  secret: ${JWT_SECRET:change-me-local-dev-secret}
+  expiration-ms: 300000

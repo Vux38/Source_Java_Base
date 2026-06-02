@@ -1,8 +1,5 @@
 package com.vux38.auth.controller;
 
-import java.time.Instant;
-import java.util.UUID;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,67 +8,97 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.vux38.auth.security.JwtTokenService;
+import com.vux38.auth.dto.request.LoginRequest;
+import com.vux38.auth.dto.request.RefreshTokenRequest;
+import com.vux38.auth.dto.request.RegisterRequest;
+import com.vux38.auth.dto.response.ApiResponse;
+import com.vux38.auth.dto.response.AuthResponse;
+import com.vux38.auth.dto.response.HealthResponse;
+import com.vux38.auth.dto.response.RegisterResponse;
+import com.vux38.auth.service.AuthService;
 
+import jakarta.validation.Valid;
+import jakarta.servlet.http.HttpServletRequest;
+
+/**
+ * Handles authentication endpoints for registration, login, token refresh, and health checks.
+ */
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
 
-    private final JwtTokenService jwtTokenService;
+    private final AuthService authService;
 
-    public AuthController(JwtTokenService jwtTokenService) {
-        this.jwtTokenService = jwtTokenService;
+    public AuthController(AuthService authService) {
+        this.authService = authService;
     }
 
+    /**
+     * Returns the service health status.
+     *
+     * @return health response envelope
+     */
     @GetMapping("/health")
-    public ApiResponse<HealthData> health() {
+    public ApiResponse<HealthResponse> health(HttpServletRequest servletRequest) {
         return ApiResponse.ok(
                 "Auth service is running",
-                new HealthData("auth-service", "UP"));
+                new HealthResponse("auth-service", "UP"),
+                traceId(servletRequest));
     }
 
+    /**
+     * Registers a new user account.
+     *
+     * @param request validated registration payload
+     * @return created user response envelope
+     */
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
-    public ApiResponse<RegisterData> register(@RequestBody RegisterRequest request) {
-        RegisterData data = new RegisterData(
-                UUID.randomUUID().toString(),
-                request.username(),
-                request.email(),
-                "REGISTERED");
-
-        return ApiResponse.created("User registered successfully", data);
+    public ApiResponse<RegisterResponse> register(
+            @Valid @RequestBody RegisterRequest request,
+            HttpServletRequest servletRequest
+    ) {
+        return ApiResponse.created(
+                "User registered successfully",
+                authService.register(request),
+                traceId(servletRequest));
     }
 
+    /**
+     * Authenticates a user with username and password.
+     *
+     * @param request validated login payload
+     * @return access and refresh token response envelope
+     */
     @PostMapping("/login")
-    public ApiResponse<LoginData> login(@RequestBody LoginRequest request) {
-        String token = jwtTokenService.generateToken(request.username());
-        LoginData data = new LoginData(request.username(), token, 300);
-
-        return ApiResponse.ok("Login successfully", data);
+    public ApiResponse<AuthResponse> login(
+            @Valid @RequestBody LoginRequest request,
+            HttpServletRequest servletRequest
+    ) {
+        return ApiResponse.ok(
+                "Login successfully",
+                authService.login(request),
+                traceId(servletRequest));
     }
 
-    public record ApiResponse<T>(int status, boolean success, String message, T data, String timestamp) {
-        public static <T> ApiResponse<T> ok(String message, T data) {
-            return new ApiResponse<>(HttpStatus.OK.value(), true, message, data, Instant.now().toString());
-        }
-
-        public static <T> ApiResponse<T> created(String message, T data) {
-            return new ApiResponse<>(HttpStatus.CREATED.value(), true, message, data, Instant.now().toString());
-        }
+    /**
+     * Issues a new access token from a valid refresh token.
+     *
+     * @param request validated refresh token payload
+     * @return refreshed token response envelope
+     */
+    @PostMapping("/refresh")
+    public ApiResponse<AuthResponse> refresh(
+            @Valid @RequestBody RefreshTokenRequest request,
+            HttpServletRequest servletRequest
+    ) {
+        return ApiResponse.ok(
+                "Token refreshed successfully",
+                authService.refresh(request),
+                traceId(servletRequest));
     }
 
-    public record HealthData(String service, String status) {
-    }
-
-    public record RegisterRequest(String username, String email, String password) {
-    }
-
-    public record RegisterData(String id, String username, String email, String status) {
-    }
-
-    public record LoginRequest(String username, String password) {
-    }
-
-    public record LoginData(String username, String accessToken, long expiresInSeconds) {
+    private String traceId(HttpServletRequest servletRequest) {
+        return servletRequest.getHeader("X-Trace-Id");
     }
 }
