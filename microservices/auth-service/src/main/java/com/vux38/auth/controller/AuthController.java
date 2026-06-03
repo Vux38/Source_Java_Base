@@ -1,5 +1,6 @@
 package com.vux38.auth.controller;
 
+import com.vux38.common.response.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vux38.auth.dto.request.LoginRequest;
 import com.vux38.auth.dto.request.RefreshTokenRequest;
 import com.vux38.auth.dto.request.RegisterRequest;
-import com.vux38.auth.dto.response.ApiResponse;
 import com.vux38.auth.dto.response.AuthResponse;
 import com.vux38.auth.dto.response.HealthResponse;
 import com.vux38.auth.dto.response.RegisterResponse;
@@ -75,10 +75,14 @@ public class AuthController {
             @Valid @RequestBody LoginRequest request,
             HttpServletRequest servletRequest
     ) {
+
+        AuthResponse authResponse = authService.login(request);
+
         return ApiResponse.ok(
-                "Login successfully",
-                authService.login(request),
-                traceId(servletRequest));
+                "Login successfullys",
+                authResponse,
+                traceId(servletRequest)
+        );
     }
 
     /**

@@ -12,7 +12,7 @@ spring:
       maximum-pool-size: 5
   jpa:
     hibernate:
-      ddl-auto: validate
+      ddl-auto: update
     properties:
       hibernate.dialect: org.hibernate.dialect.MySQLDialect
   data:
@@ -31,3 +31,7 @@ spring:
 jwt:
   secret: ${JWT_SECRET:change-me-local-dev-secret}
   expiration-ms: 300000
+logging:
+  level:
+    org.springframework.web: DEBUG
+    org.springframework.cloud.gateway: DEBUG

@@ -5,38 +5,37 @@
 
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- Spring Boot parent (QUAN TRỌNG) -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.5.14</version>
+        <relativePath/>
+    </parent>
+
     <groupId>com.vux38</groupId>
     <artifactId>microservices</artifactId>
     <version>1.0.0</version>
-
     <packaging>pom</packaging>
 
+    <!-- Modules -->
     <modules>
+        <module>common</module>
         <module>api-gateway</module>
         <module>auth-service</module>
         <module>user-service</module>
         <module>product-service</module>
-        <module>common-lib</module>
     </modules>
 
+    <!-- Properties -->
     <properties>
         <java.version>21</java.version>
-        <maven.compiler.release>${java.version}</maven.compiler.release>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spring.boot.version>3.4.6</spring.boot.version>
-        <spring-cloud.version>2024.0.0</spring-cloud.version>
+        <spring-cloud.version>2025.0.0</spring-cloud.version>
     </properties>
 
+    <!-- Spring Cloud (chỉ giữ cái này) -->
     <dependencyManagement>
         <dependencies>
-
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${spring.boot.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
 
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
@@ -49,21 +48,16 @@
         </dependencies>
     </dependencyManagement>
 
+    <!-- Plugin -->
     <build>
         <pluginManagement>
             <plugins>
+
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>${spring.boot.version}</version>
-                    <executions>
-                        <execution>
-                            <goals>
-                                <goal>repackage</goal>
-                            </goals>
-                        </execution>
-                    </executions>
                 </plugin>
+
             </plugins>
         </pluginManagement>
     </build>

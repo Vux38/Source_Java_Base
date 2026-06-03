@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import com.vux38.auth.dto.response.ApiResponse;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -60,7 +59,7 @@ public class ApiExceptionHandler {
      */
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public ApiResponse<Void> handleUnexpected(HttpServletRequest servletRequest) {
+    public ApiResponse handleUnexpected(HttpServletRequest servletRequest) {
         return ApiResponse.error(
                 HttpStatus.INTERNAL_SERVER_ERROR,
                 "Internal server error",
