@@ -2,6 +2,7 @@ package com.vux38.gateway.security;
 
 import java.time.Instant;
 
+import com.vux38.common.constant.Headers;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Component;
@@ -39,7 +40,7 @@ public class GatewayErrorWriter {
      */
     public Mono<Void> write(ServerWebExchange exchange, HttpStatus status, String message) {
         String path = exchange.getRequest().getPath().pathWithinApplication().value();
-        String traceId = exchange.getRequest().getHeaders().getFirst(GatewayHeaders.TRACE_ID);
+        String traceId = exchange.getRequest().getHeaders().getFirst(Headers.TRACE_ID);
 
         GatewayErrorResponse response = new GatewayErrorResponse(
                 status.value(),

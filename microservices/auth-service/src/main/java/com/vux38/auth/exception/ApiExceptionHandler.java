@@ -3,6 +3,7 @@ package com.vux38.auth.exception;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import com.vux38.common.response.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
