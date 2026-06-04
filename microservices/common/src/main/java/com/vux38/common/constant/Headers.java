@@ -1,9 +1,9 @@
-package com.vux38.gateway.security;
+package com.vux38.common.constant;
 
 /**
  * Defines HTTP header names used by the API gateway when forwarding authenticated requests.
  */
-public final class GatewayHeaders {
+public final class Headers {
 
     /**
      * Correlation identifier added to every request and response handled by the gateway.
@@ -20,6 +20,6 @@ public final class GatewayHeaders {
      */
     public static final String AUTHENTICATED_ROLES = "X-Authenticated-Roles";
 
-    private GatewayHeaders() {
+    private Headers() {
     }
 }

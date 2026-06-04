@@ -50,11 +50,10 @@ public class AuthService {
 
         User user = new User();
         user.setUsername(request.username());
-        user.setFullname(request.fullname());
-        user.setEmail(request.email());
-        user.setPassword(passwordEncoder.encode(request.password()));
+        user.setPassword(
+                passwordEncoder.encode(request.password())
+        );
         user.setEnabled(true);
-
         User savedUser = userRepository.save(user);
         return new RegisterResponse(savedUser.getId(), savedUser.getUsername(), savedUser.getEmail(), "REGISTERED");
     }

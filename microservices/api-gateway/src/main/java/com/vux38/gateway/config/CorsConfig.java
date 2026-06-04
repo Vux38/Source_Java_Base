@@ -2,6 +2,7 @@ package com.vux38.gateway.config;
 
 import java.util.List;
 
+import com.vux38.common.constant.Headers;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
@@ -9,8 +10,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.reactive.CorsWebFilter;
 import org.springframework.web.cors.reactive.UrlBasedCorsConfigurationSource;
-
-import com.vux38.gateway.security.GatewayHeaders;
 
 /**
  * Configures cross-origin requests for browser clients that call the gateway.
@@ -44,9 +43,9 @@ public class CorsConfig {
         ));
         cors.setAllowedHeaders(List.of("*"));
         cors.setExposedHeaders(List.of(
-                GatewayHeaders.TRACE_ID,
-                GatewayHeaders.AUTHENTICATED_USER,
-                GatewayHeaders.AUTHENTICATED_ROLES,
+                Headers.TRACE_ID,
+                Headers.AUTHENTICATED_USER,
+                Headers.AUTHENTICATED_ROLES,
                 HttpHeaders.AUTHORIZATION
         ));
         cors.setAllowCredentials(true);

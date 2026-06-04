@@ -3,7 +3,6 @@ package com.vux38.common.response;
 import java.time.Instant;
 import java.util.UUID;
 
-import com.vux38.common.response.Meta;
 import org.springframework.http.HttpStatus;
 
 /**
@@ -26,31 +25,22 @@ public record ApiResponse<T>(
      * @param <T> payload type
      * @return response envelope
      */
-    public static <T> ApiResponse<T> ok(String message, T data) {
-        return ok(message, data, null);
-    }
-
-
-    /**
-     * Creates a successful 200 response.
-     *
-     * @param message response message
-     * @param data response payload
-     * @param traceId request trace id
-     * @param <T> payload type
-     * @return response envelope
-     */
-    public static <T> ApiResponse<T> ok(String message, T data, String traceId) {
+    public static <T> ApiResponse<T> ok(
+            String message,
+            T data,
+            String traceId
+    ) {
         return new ApiResponse<>(
                 new Meta(
-                        200,
+                        HttpStatus.OK.value(),
                         message,
-                        traceId,
-                        System.currentTimeMillis()
+                        resolveTraceId(traceId),
+                        Instant.now().toEpochMilli()
                 ),
                 data
         );
     }
+
 
     /**
      * Creates a successful 201 response.
