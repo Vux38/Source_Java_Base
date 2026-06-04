@@ -41,6 +41,12 @@
             <artifactId>jjwt-api</artifactId>
             <version>0.12.7</version>
         </dependency>
+        <dependency>
+            <groupId>com.vux38</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0.0</version>
+            <scope>compile</scope>
+        </dependency>
 
     </dependencies>
 

@@ -1,6 +1,5 @@
 package com.vux38.user.controller;
 
-import java.time.Instant;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,11 +37,6 @@ public class UserController {
         return ApiResponse.ok("User loaded successfully", user);
     }
 
-    public record ApiResponse<T>(boolean success, String message, T data, String timestamp) {
-        public static <T> ApiResponse<T> ok(String message, T data) {
-            return new ApiResponse<>(true, message, data, Instant.now().toString());
-        }
-    }
 
     public record HealthData(String service, String status) {
     }

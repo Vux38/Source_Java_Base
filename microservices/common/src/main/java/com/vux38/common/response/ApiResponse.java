@@ -1,8 +1,9 @@
-package com.vux38.auth.dto.response;
+package com.vux38.common.response;
 
 import java.time.Instant;
 import java.util.UUID;
 
+import com.vux38.common.response.Meta;
 import org.springframework.http.HttpStatus;
 
 /**
@@ -29,6 +30,7 @@ public record ApiResponse<T>(
         return ok(message, data, null);
     }
 
+
     /**
      * Creates a successful 200 response.
      *
@@ -39,7 +41,15 @@ public record ApiResponse<T>(
      * @return response envelope
      */
     public static <T> ApiResponse<T> ok(String message, T data, String traceId) {
-        return of(HttpStatus.OK, message, data, traceId);
+        return new ApiResponse<>(
+                new Meta(
+                        200,
+                        message,
+                        traceId,
+                        System.currentTimeMillis()
+                ),
+                data
+        );
     }
 
     /**
@@ -110,19 +120,5 @@ public record ApiResponse<T>(
         return traceId;
     }
 
-    /**
-     * Metadata included in every API response.
-     *
-     * @param status HTTP status code
-     * @param message human-readable result message
-     * @param traceId request correlation id
-     * @param timestamp epoch millisecond response timestamp
-     */
-    public record Meta(
-            int status,
-            String message,
-            String traceId,
-            long timestamp
-    ) {
-    }
+
 }

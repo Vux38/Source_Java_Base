@@ -35,8 +35,5 @@ build/
 ### VS Code ###
 .vscode/
 
-### Local environment ###
-local-env.ps1
-
 ### Mac OS ###
 .DS_Store

@@ -52,3 +52,8 @@ spring:
 jwt:
   secret: ${JWT_SECRET:change-me-local-dev-secret}
   expiration-ms: 300000
+
+logging:
+  level:
+    org.springframework.web: DEBUG
+    org.springframework.cloud.gateway: DEBUG
