@@ -36,6 +36,7 @@ public class AuthServiceImpl implements AuthService {
         // 2. Tạo user mới
         User user = User.builder()
                 .email(request.getEmail())
+                .fullName(request.getFullName())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .provider(AuthProvider.LOCAL)
                 .role(Role.ROLE_USER)
