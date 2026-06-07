@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="937da33f-60bb-48e0-a45e-63d84bd2e323" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/client/UserServiceClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/config/RoleDataInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/dto/request/CreateUserProfileRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/dto/request/LogoutRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/exception/AuthException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/exception/DuplicateUsernameException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/exception/TokenException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/exception/UserCreationException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../microservices/logs/auth-service.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../microservices/user-service/src/main/java/com/vux38/user/controller/UserInternalController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../microservices/user-service/src/main/java/com/vux38/user/dto/request/CreateUserProfileRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../microservices/user-service/src/main/java/com/vux38/user/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/.env" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/api-gateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/api-gateway/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/api-gateway/src/main/resources/application-docker.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/auth-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/auth-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/AuthServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/AuthServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/dto/response/AuthResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/dto/response/AuthResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/entity/RefreshToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/entity/RefreshToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/exception/ApiExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/exception/ApiExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/repository/RefreshTokenRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/repository/RefreshTokenRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/security/CustomUserDetailsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/security/CustomUserDetailsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/security/JwtTokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/security/JwtTokenService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/security/SecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/service/AuthService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/service/JwtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/service/JwtService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/service/RefreshTokenService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/auth-service/src/main/java/com/vux38/auth/service/RefreshTokenService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/auth-service/src/main/resources/application-docker.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/auth-service/src/main/resources/application-docker.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/auth-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/auth-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/product-service/src/main/resources/application-docker.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/product-service/src/main/resources/application-docker.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/user-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/user-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/user-service/src/main/java/com/vux38/user/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/user-service/src/main/java/com/vux38/user/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/user-service/src/main/java/com/vux38/user/dto/response/UserResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/user-service/src/main/java/com/vux38/user/dto/response/UserResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/user-service/src/main/java/com/vux38/user/entity/UserProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/user-service/src/main/java/com/vux38/user/entity/UserProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/user-service/src/main/java/com/vux38/user/repository/UserProfileRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/user-service/src/main/java/com/vux38/user/repository/UserProfileRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/user-service/src/main/java/com/vux38/user/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/user-service/src/main/java/com/vux38/user/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/user-service/src/main/resources/application-docker.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/user-service/src/main/resources/application-docker.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../microservices/user-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../microservices/user-service/src/main/resources/application.yml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Vux38"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Vux38/Source_Java_Base.git",
+    "accountId": "3d480cab-2328-4d15-896b-f24ec7131e6e"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
+  <component name="ProjectId" id="3El7H8Q0RQXiuz2Qyd23jxw4Aso" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/dinhv/Desktop/AVux/auth-project/src"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.28238.7" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="937da33f-60bb-48e0-a45e-63d84bd2e323" name="Changes" comment="" />
+      <created>1780741211868</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1780741211868</updated>
+    </task>
+    <servers />
+  </component>
+</project>

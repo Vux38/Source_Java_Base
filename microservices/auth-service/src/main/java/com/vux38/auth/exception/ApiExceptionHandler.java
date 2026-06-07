@@ -3,6 +3,7 @@ package com.vux38.auth.exception;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import com.vux38.common.constant.Headers;
 import com.vux38.common.response.ApiResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -66,6 +67,20 @@ public class ApiExceptionHandler {
                 "Internal server error",
                 null,
                 traceId(servletRequest));
+    }
+
+    @ExceptionHandler(DuplicateUsernameException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public ApiResponse<Void> handleDuplicateUsername(
+            DuplicateUsernameException ex,
+            HttpServletRequest request) {
+
+        return ApiResponse.error(
+                HttpStatus.CONFLICT,
+                ex.getMessage(),
+                null,
+                request.getHeader(Headers.TRACE_ID)
+        );
     }
 
     private String traceId(HttpServletRequest servletRequest) {

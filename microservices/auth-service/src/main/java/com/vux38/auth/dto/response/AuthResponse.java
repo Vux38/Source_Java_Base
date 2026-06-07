@@ -1,7 +1,25 @@
 package com.vux38.auth.dto.response;
 
+import lombok.Builder;
+import lombok.Getter;
+
 /**
- * Response body returned after authentication or token refresh succeeds.
+ * Response object for authentication operations.
+ * <p>
+ * Contains JWT access token, refresh token, and basic user information.
+ * </p>
+ *
+ * @param accessToken the JWT access token
+ * @param refreshToken the refresh token for obtaining new access tokens
+ * @param userId the unique identifier of the authenticated user
+ * @param username the username of the authenticated user
+ * @author VUX38
+ * @version 1.0
  */
-public record AuthResponse(String username, String accessToken, String refreshToken, long expiresInSeconds) {
-}
+@Builder
+public record AuthResponse(
+        String accessToken,
+        String refreshToken,
+        Long userId,
+        String username
+) {}

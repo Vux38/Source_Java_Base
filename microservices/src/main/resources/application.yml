@@ -3,7 +3,7 @@ spring:
     name: function
 
   datasource:
-    url: jdbc:mysql://localhost:3306/portfolio_db
+    url: jdbc:mysql://localhost:3306/microservices
     username: root
     password: Sa12
     driver-class-name: com.mysql.cj.jdbc.Driver
